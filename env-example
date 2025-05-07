@@ -1,0 +1,17 @@
+# Django
+SECRET_KEY = '<secret_key>'
+
+# DB
+POSTGRES_USER=postgres
+POSTGRES_PASSWORD=postgres
+POSTGRES_DB=finai_dev
+POSTGRES_HOST=localhost
+POSTGRES_PORT=5432
+
+# Celery
+# RabbitMQ broker (Celery)
+RABBITMQ_USER=guest
+RABBITMQ_PASSWORD=guest
+RABBITMQ_URL=amqp://guest:guest@localhost:5672//
+
+ANTHROPIC_API_KEY='<anthropic_api_key>'
