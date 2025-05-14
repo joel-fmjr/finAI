@@ -7,6 +7,6 @@ from core.api.viewsets import (
 )
 
 router = DefaultRouter()
-router.register(r'file-upload', UploadedFileViewSet)
-router.register(r'categories', CategoryViewSet)
-router.register(r'transactions', TransactionViewSet)
+router.register(r'file-upload', UploadedFileViewSet, basename='file-upload')
+router.register(r'categories', CategoryViewSet, basename='category')
+router.register(r'transactions', TransactionViewSet, basename='transaction')
