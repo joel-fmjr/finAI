@@ -7,7 +7,7 @@ from core.models import Category
 
 class CategoryViewSet(viewsets.ViewSet):
     def list(self, request):
-        queryset = Category.objects.all()
+        queryset = Category.objects.all().order_by("name")
         serializer = CategorySerializer(queryset, many=True)
         return Response(serializer.data)
 
