@@ -88,5 +88,5 @@ class FileProcessor:
     def run(self):
         md = self.convert_to_markdown()
         data = self.categorize_transactions(md)
-        self.persist_transactions(data['context'])
-        return data
+        result = self.persist_transactions(data['context'])
+        return result
