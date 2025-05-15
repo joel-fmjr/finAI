@@ -4,9 +4,23 @@ from core.models import Category, Transaction, UploadedFile
 
 
 class UploadedFileSerializer(serializers.ModelSerializer):
+
+    def update(self, instance, validated_data):
+        if self.partial is True:
+            instance.name = validated_data.get('name', instance.name)
+            instance.file_type = validated_data.get('file_type', instance.file_type)
+            instance.save()
+            return instance
+        
+        if validated_data.get('file'):
+            raise serializers.ValidationError(
+                {'file': 'O arquivo não pode ser atualizado'}
+            )
+        return super().update(instance, validated_data)
+
     class Meta:
         model = UploadedFile
-        fields = ['file', 'name', 'file_type']
+        fields = ['id','file', 'name', 'file_type']
 
 
 class CategorySerializer(serializers.ModelSerializer):
