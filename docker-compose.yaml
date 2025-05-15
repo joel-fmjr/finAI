@@ -49,8 +49,8 @@ services:
   #   command: celery -A finAI worker --loglevel=info
   #   volumes:
   #     - .:/app
-  #     - media_volume:/app/media      # ← mount media here!
-  #     - static_volume:/app/staticfiles  # optional, if you need static
+  #     - media_volume:/app/media
+  #     - static_volume:/app/staticfiles
   #   env_file:
   #     - .env
   #   depends_on:

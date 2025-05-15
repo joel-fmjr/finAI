@@ -14,8 +14,8 @@ class UploadedFile(models.Model):
     is_processed = models.BooleanField(default=False)
     processed_at = models.DateTimeField(null=True, blank=True)
     error_message = models.TextField(null=True, blank=True)
-    processed_data = models.TextField(null=True, blank=True)
-    processed_data_json = models.TextField(null=True, blank=True)
+    markdown_data = models.TextField(null=True, blank=True)
+    json_data = models.TextField(null=True, blank=True)
 
     class Meta:
         ordering = ['-created_at']

@@ -1,6 +1,9 @@
+import json
+
 from django.contrib import admin
 
 from .models import Category, Transaction, UploadedFile
+from .services import FileProcessor
 
 
 @admin.register(UploadedFile)
@@ -16,6 +19,19 @@ class UploadedFileAdmin(admin.ModelAdmin):
     search_fields = ('name',)
     readonly_fields = ('created_at', 'updated_at', 'processed_at')
     date_hierarchy = 'created_at'
+
+    actions = ['persist_transactions', 'process_file']
+
+    def persist_transactions(self, request, queryset):
+        for file in queryset:
+            processor = FileProcessor(file)
+            json_data = json.loads(file.processed_data_json)
+            processor.persist_transactions(json_data['context'])
+
+    def process_file(self, request, queryset):
+        for file in queryset:
+            processor = FileProcessor(file)
+            processor.run()
 
 
 @admin.register(Category)
