@@ -78,7 +78,9 @@ class FileProcessor:
     def persist_transactions(self, context: list[dict]):
         transactions = []
         for transaction in context:
-            transaction['date'] = pendulum.from_format(transaction['date'], 'DD/MM/YYYY').date()
+            transaction['date'] = pendulum.from_format(
+                transaction['date'], 'DD/MM/YYYY'
+            ).date()
             transaction['source_file'] = self.uploaded_file
             transactions.append(Transaction(**transaction))
         Transaction.objects.bulk_create(transactions)
